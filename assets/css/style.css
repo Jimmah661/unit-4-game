@@ -17,6 +17,13 @@ body {
     display: flex;
 }
 
+.playerChoice {
+    background-color: #ffffff;
+    border: 1px solid green;
+    height: 200px;
+    width: 400px;
+}
+
 #gameStart {
     font-family: starWarsFont;
     width: 500px;
@@ -33,5 +40,9 @@ body {
 #playArea {
     display: none;
     text-align: center;
-    
+
+}
+
+#yoda {
+    width: 80%
 }
