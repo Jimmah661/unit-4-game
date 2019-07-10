@@ -1,7 +1,37 @@
+@font-face {
+    font-family: starWarsFont;
+    src: url(./Starjedi.ttf)
+}
+
+html {
+    height: 100vh;
+    width: 100vw;
+}
+
 body {
     margin: 0;
-    height: 100vh;
-    width: 100vh;
+    height: 100%;
+    width: 100%;
     background-image: url(../images/Background.jpg);
     background-size: cover;
+    display: flex;
+}
+
+#gameStart {
+    font-family: starWarsFont;
+    width: 500px;
+    height: 60px;
+    text-align: center;
+    font-size: 300%;
+    margin: auto;
+    color: #e5b13a;
+    background-color: #000;
+    border: 4px solid #e5b13a;
+    border-radius: 10px;
+}
+
+#playArea {
+    display: none;
+    text-align: center;
+    
 }
