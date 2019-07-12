@@ -14,15 +14,30 @@ body {
     width: 100%;
     background-image: url(../images/Background.jpg);
     background-size: cover;
-    display: flex;
+    /* display: flex; */
 }
 
 .playerChoice {
     background-color: #ffffff;
     border: 1px solid green;
     height: 200px;
-    width: 400px;
+    width: 200px;
+    float: left;
 }
+
+.portrait {
+    width: 180px;
+    height: 160px;
+    margin: auto;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  
 
 #gameStart {
     font-family: starWarsFont;
@@ -43,6 +58,3 @@ body {
 
 }
 
-#yoda {
-    width: 80%
-}
