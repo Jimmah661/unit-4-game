@@ -27,13 +27,15 @@ var characterList = {
 
 var playFunctions = {
     generate: function (x) {
+        // function to create the character choice boxes
         for (i = 0; i < Object.keys(x).length; i++) {
             var name = Object.keys(x)[i];
             var character = $("<div>");
             character.addClass("playerChoice");
-            character.attr("data-name", name);
+            character.attr('ID', name);
             character.append("<p>" + name.charAt(0).toUpperCase() + name.slice(1) + "</p>");
             character.append(Object(x)[name].img);
+            character.append(Object(x)[name].hp)
             $('#charChoice').prepend(character);
         }
     }
@@ -41,17 +43,26 @@ var playFunctions = {
 
 
 
-$("#gameStart").on('click', function () {
+// $("#gameStart").on('click', function () {
 
-    //hide start screen
-    $('#gameStart').css({ display: "none" });
+//     //hide start screen
+//     $('#gameStart').css({ display: "none" });
 
-    //Show main play page
-    $('#playArea').css({ display: "inherit" });
+//     //Show main play page
+//     $('#playArea').css({ display: "inherit" });
 
-    // Create  character choice boxes
-    playFunctions.generate(characterList);
-    // console.log(Object.keys(characters).length)
-});
+//     // Create  character choice boxes
+//     playFunctions.generate(characterList);
+// });
 
+playFunctions.generate(characterList);
+$('#vader').on('click', function () {
+    $('#vader').removeClass('playerChoice');
+    $('#vader').addClass('chosenPlayer');
+    $('#vader').detach().appendTo('#chosenChar');
+    $('.playerChoice').detach().appendTo('#availEnemies');
+    $('.playerChoice').addClass('enemy');
+    $('.playerChoice').removeClass('playerChoice');
+    console.log('test');
+})
 

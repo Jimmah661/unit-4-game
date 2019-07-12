@@ -25,6 +25,22 @@ body {
     float: left;
 }
 
+.chosenPlayer {
+    background-color: #ffffff;
+    border: 1px solid green;
+    height: 200px;
+    width: 200px;
+    float: left;
+}
+
+.enemy {
+    background-color: #000000;
+    border: 1px solid red;
+    height: 200px;
+    width: 200px;
+    float: left;
+}
+
 .portrait {
     width: 180px;
     height: 160px;
@@ -53,7 +69,7 @@ body {
 }
 
 #playArea {
-    display: none;
+    /* display: none; */
     text-align: center;
 
 }
