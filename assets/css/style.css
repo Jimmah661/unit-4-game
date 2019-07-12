@@ -17,43 +17,49 @@ body {
     /* display: flex; */
 }
 
-.playerChoice {
-    background-color: #ffffff;
-    border: 1px solid green;
-    height: 200px;
-    width: 200px;
-    float: left;
+h1 {
+    font-size: 200%
 }
 
-.chosenPlayer {
-    background-color: #ffffff;
-    border: 1px solid green;
+h2 {
+    font-size: 150%
+}
+
+/* Sizes the images in the character windows */
+.portrait {
+    width: 180px;
+    height: 160px;
+    margin: auto;
+    text-align: center;
+}
+
+/* shared dimensions accross character windows */
+
+.playerChoice, .chosenPlayer, .enemy {
     height: 200px;
     width: 200px;
     float: left;
+    text-align: center;
+}
+
+.playerChoice, .chosenPlayer {
+    background-color: #ffffff;
+    border: 1px solid green;
+
 }
 
 .enemy {
     background-color: #000000;
     border: 1px solid red;
-    height: 200px;
-    width: 200px;
-    float: left;
-}
-
-.portrait {
-    width: 180px;
-    height: 160px;
-    margin: auto;
+    color: white;
+  
 }
 
 .clearfix::after {
     content: "";
     clear: both;
     display: table;
-  }
-
-  
+}
 
 #gameStart {
     font-family: starWarsFont;
@@ -67,10 +73,3 @@ body {
     border: 4px solid #e5b13a;
     border-radius: 10px;
 }
-
-#playArea {
-    /* display: none; */
-    text-align: center;
-
-}
-
