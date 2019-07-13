@@ -14,15 +14,24 @@ body {
     width: 100%;
     background-image: url(../images/Background.jpg);
     background-size: cover;
-    /* display: flex; */
 }
 
 h1 {
-    font-size: 200%
+    font-size: 250%;
+    font-family: starWarsFont;
 }
 
 h2 {
+    font-size: 200%
+}
+
+p {
     font-size: 150%
+}
+
+a {
+    color: black;
+    text-decoration:none;
 }
 
 /* Sizes the images in the character windows */
@@ -36,7 +45,7 @@ h2 {
 /* shared dimensions accross character windows */
 
 .playerChoice, .chosenPlayer, .enemy {
-    height: 200px;
+    height: 220px;
     width: 200px;
     float: left;
     text-align: center;
@@ -61,18 +70,7 @@ h2 {
     display: table;
 }
 
-#gameStart {
-    font-family: starWarsFont;
-    width: 500px;
-    height: 60px;
-    text-align: center;
-    font-size: 300%;
-    margin: auto;
-    color: #e5b13a;
-    background-color: #000;
-    border: 4px solid #e5b13a;
-    border-radius: 10px;
-}
+
 
 #reset {
     display: none;
