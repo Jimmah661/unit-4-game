@@ -51,12 +51,19 @@ var playFunctions = {
         // function to create the character choice boxes
         for (i = 0; i < Object.keys(x).length; i++) {
             var ID = Object.keys(x)[i];
+
+            // Create character tiles
             var character = $("<div>");
+            // Assign class and ID for character divs
             character.addClass("playerChoice");
             character.attr('ID', ID);
+            // Add name to character div
             character.append("<p>" + Object(x)[ID].name + "</p>");
+            // Add image to character div
             character.append(Object(x)[ID].img);
+            // Add HP to div
             character.append("<p class='" + ID + "HP'>" + Object(x)[ID].hp + "</p>")
+            // Assign div to Choice location
             $('#charChoice').append(character);
         }
     }
@@ -148,39 +155,77 @@ $('.playerChoice').on('click', function () {
 // If the attack button is clicked call this function
 $('#smackThat').click(function () {
     if (gameActive === true) {
+        $('#battleReport').empty();
         // resolve damage
-        defenderStats.hp = defenderStats.hp - playerStats.atk;
+        defenderStats.hp -= playerStats.atk;
         playerStats.hp -= defenderStats.catk;
-        playerStats.atk = playerStats.atk + 6;
+
+
+        // Display damage information below defender
+        var yourDamage = $('<p>You did ' + playerStats.atk + ' damage</p>')
+        var theirDamage = $('<p>They countered for ' + defenderStats.catk + ' damage</p>')
+        $('#battleReport').append(yourDamage);
+        $('#battleReport').append(theirDamage);
+
+        // Increase player attack
+        playerStats.atk += 6;
+
         // Clear the defeated enemy and bring the others back
         if (gameActive === true && defenderStats.hp <= 0) {
             $('#defender').empty();
             smackDown++;
             $('#availEnemies').show();
+
+            //if all enemies have been beaten, display the reset option
             if (smackDown === 3) {
-                $('reset').show();
+                $('#battleReport').empty();
+                $('#battleReport').text('You Win! Click Restart to try again')
+                $('#reset').show();
+                gameActive = false;
             }
 
         }
+        // If you get beaten, display a message stating so and give the reset option
         else if (gameActive === true && playerStats.hp <= 0) {
-            $('reset').show();
-            alert('You Lose Jerkwad!')
+            $('#reset').show();
+            $('#battleReport').empty();
+            $('#battleReport').text('You lost, click restart to try again')
+            gameActive = false;
         }
     }
 })
 
 
+
+
+
+
+
+
 // If the reset button is clicked call this function
-$('reset').click(function () {
+$('#reset').click(function () {
+
     // Reset defeated opponents
     smackDown = 0;
+
     // remove existing player portraits
-    ('.playerChoice').remove();
+    $('.enemy').remove();
+    $('.chosenPlayer').remove();
+
     // Set gameboard up again
     playFunctions.generate(characterList);
+    enemyChosen = false;
+    playerChosen = false;
+    $('#battleReport').empty();
     // Hide Reset button
-    $('reset').hide();
+    $('#reset').hide();
 })
+
+
+
+
+
+
 
 
 $('.playerChoice').click(function () {
