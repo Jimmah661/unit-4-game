@@ -83,15 +83,19 @@ $('.playerChoice').on('click', function () {
         $("#" + id).removeClass('playerChoice');
         $("#" + id).addClass('chosenPlayer');
         $("#" + id).detach().appendTo('#chosenChar');
+        // set the playerStats to be that of the selected character
+        playerStats = Object(characterList)[id];
+        playerChosen = true;
+        $("." + id + "HP").replaceWith('<p id="heroHP">');
+        $("#heroHP").text("HP: " + playerStats.hp)
 
         // separate other characters to the enemies section
         $('.playerChoice').detach().appendTo('#availEnemies');
         $('.playerChoice').addClass('enemy');
         $('.playerChoice').removeClass('playerChoice');
 
-        // set the playerStats to be that of the selected character
-        playerStats = Object(characterList)[id];
-        playerChosen = true;
+        $('#charChoice').hide();
+
     }
 
     // select defender
@@ -101,6 +105,9 @@ $('.playerChoice').on('click', function () {
 
         // Move his stats to the enemy stats list
         defenderStats = Object(characterList)[id];
+
+        $("." + id + "HP").replaceWith('<p id="defenderHP">');
+        $("#defenderHP").text("HP: " + defenderStats.hp)
 
         // Hide other enemies
         $('#availEnemies').hide();
@@ -116,6 +123,7 @@ $('#smackThat').click(function () {
         $('#battleReport').empty();
         // resolve damage to enemy
         defenderStats.hp -= playerStats.atk;
+        $('#defenderHP').text("HP: " + defenderStats.hp);
 
         // Display damage information below defender
         var yourDamage = $('<p>You did ' + playerStats.atk + ' damage</p>')
@@ -125,6 +133,7 @@ $('#smackThat').click(function () {
 
         // Increase player attack
         playerStats.atk += 8;
+
 
         // Clear the defeated enemy and bring the others back
         if (gameActive === true && defenderStats.hp <= 0) {
@@ -146,6 +155,7 @@ $('#smackThat').click(function () {
 
         // Resolve damage to player
         playerStats.hp -= defenderStats.catk;
+        $('#heroHP').text("HP: " + playerStats.hp)
 
         // If you get beaten, display a message stating so and give the reset option
         if (gameActive === true && playerStats.hp <= 0) {
